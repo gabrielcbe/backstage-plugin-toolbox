@@ -2,8 +2,7 @@ import React from 'react';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import AssignmentReturnedIcon from '@mui/icons-material/AssignmentReturned';
-import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
-import { toolboxTranslationRef } from '../../translation';
+import { useTranslation } from '../../hooks';
 
 type Props = {
   setInput: (input: string) => void;
@@ -11,7 +10,7 @@ type Props = {
 };
 
 export const PasteFromClipboardButton = (props: Props) => {
-  const { t: intl } = useTranslationRef(toolboxTranslationRef);
+  const { t: intl } = useTranslation();
   const pasteFromClipboard = () => {
     navigator.clipboard.readText().then(
       text => props.setInput(text),

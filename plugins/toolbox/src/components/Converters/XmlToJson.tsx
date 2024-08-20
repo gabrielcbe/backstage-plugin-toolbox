@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
 import { xml2json } from 'xml-js';
 import { JsonSpaceSelector } from '../DefaultEditor/JsonSpaceSelector';
+import { useTranslation } from '../../hooks';
 
 export const XmlToJson = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
   const [spaces, setSpaces] = React.useState(4);
+  const { t: intl } = useTranslation();
 
   const sample =
     '<elements><element id="123"/><element id="325" name="April"/></elements>';
@@ -17,7 +19,7 @@ export const XmlToJson = () => {
       const obj = JSON.parse(json);
       setOutput(JSON.stringify(obj, null, spaces));
     } catch (e) {
-      setOutput(`Invalid XML provided: ${e.message}`);
+      setOutput(`${intl('tool.xml-to-json-convert.invalidFormat')}: ${e.message}`);
     }
   }, [input, spaces]);
 

@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
 import beautify from 'js-beautify';
+import { useTranslation } from '../../hooks';
 
 export const HTMLBeautify = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
+  const { t: intl } = useTranslation();
+
   const sample =
     '<html><head><title>BACKSTAGE FTW!!</title></head><body><p>BACKSTAGE IS THE BEST!!</p></body></html>';
 
@@ -32,8 +35,8 @@ export const HTMLBeautify = () => {
       output={output}
       sample={sample}
       allowFileUpload
-      inputLabel="Unformatted HTML"
-      outputLabel="Formatted HTML"
+      inputLabel={intl('tool.format-html.inputLabel')}
+      outputLabel={intl('tool.format-html.outputLabel')}
       acceptFileTypes=".html,.htm"
       allowFileDownload
       downloadFileName="download.html"

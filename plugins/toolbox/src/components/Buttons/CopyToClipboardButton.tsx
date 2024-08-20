@@ -2,8 +2,7 @@ import React from 'react';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import FileCopy from '@mui/icons-material/FileCopy';
-import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
-import { toolboxTranslationRef } from '../../translation';
+import { useTranslation } from '../../hooks';
 
 type Props = {
   output: string | number;
@@ -11,7 +10,7 @@ type Props = {
 };
 
 export const CopyToClipboardButton = (props: Props) => {
-  const { t: intl } = useTranslationRef(toolboxTranslationRef);
+  const { t: intl } = useTranslation();
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(props.output.toString());

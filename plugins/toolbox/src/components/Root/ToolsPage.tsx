@@ -27,8 +27,7 @@ import Button from '@mui/material/Button';
 import TabPanel from '@mui/lab/TabPanel';
 import TabContext from '@mui/lab/TabContext';
 import { useBackendTools } from '../../hooks';
-import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
-import { toolboxTranslationRef } from '../../translation';
+import { useTranslation } from '../../hooks';
 
 type TabInfo = {
   tab: ReactElement;
@@ -81,7 +80,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
   const favorites = useFavoriteStorage();
   const { classes } = useStyles();
 
-  const { t: intl } = useTranslationRef(toolboxTranslationRef);
+  const { t: intl } = useTranslation();
 
   const openToolInWindow = (id: string) => {
     window.open(`/toolbox/tool/${id}`, 'newwindow', 'width=1000,height=800');

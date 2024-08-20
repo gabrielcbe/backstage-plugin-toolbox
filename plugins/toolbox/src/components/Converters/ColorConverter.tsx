@@ -22,6 +22,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
+import { useTranslation } from '../../hooks';
 
 export const ColorConverter = () => {
   const { classes } = useStyles();
@@ -35,6 +36,7 @@ export const ColorConverter = () => {
   const [lab, setLab] = React.useState<LAB>([0, 0, 0]);
   const [lch, setLch] = React.useState<LCH>([0, 0, 0]);
   const sample = '#d50032';
+  const { t: intl } = useTranslation();
 
   enum ColorType {
     Hex = 'HEX',
@@ -322,7 +324,7 @@ export const ColorConverter = () => {
             <TextField
               id="input"
               name="input"
-              label="Color"
+              label={intl('tool.color-convert.inputLabel')}
               value={getInputStr()}
               className={classes.fullWidth}
               onChange={e => handleChange(e.target.value)}

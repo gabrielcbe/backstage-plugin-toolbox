@@ -6,15 +6,17 @@ import { ContentHeader } from '@backstage/core-components';
 import { useStyles } from '../../utils/hooks';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useTranslation } from '../../hooks';
 
 export const ToolPage = (props: ToolsPageProps) => {
   const { extraTools } = props;
   const params = useParams();
   const { classes } = useStyles();
+  const { t: intl } = useTranslation();
   const allTools = [...(extraTools ?? []), ...defaultTools];
   const tool = allTools.find(({ id }) => id === params.id);
   if (!tool) {
-    return <>Tool not available</>;
+    return <>{intl('toolPage.toolNotAvailable')}</>;
   }
   return (
     <div id="toolContainer" className={classes.toolContainer}>

@@ -6,8 +6,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
-import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
-import { toolboxTranslationRef } from '../../translation';
+import { useTranslation } from '../../hooks';
 
 export type WelcomePageProps = {
   tools: Tool[];
@@ -40,7 +39,7 @@ const useStyles = makeStyles()(theme => {
 export const WelcomePage = (props: WelcomePageProps) => {
   const { tools } = props;
   const { classes } = useStyles();
-  const { t: intl } = useTranslationRef(toolboxTranslationRef);
+  const { t: intl } = useTranslation();
   return (
     <Box>
       <Typography className={classes.textBlock}>

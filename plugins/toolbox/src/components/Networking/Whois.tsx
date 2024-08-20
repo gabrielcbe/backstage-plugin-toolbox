@@ -6,6 +6,7 @@ import { Progress } from '@backstage/core-components';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { useTranslation } from '../../hooks';
 
 const Whois = () => {
   const [domain, setDomain] = useState('');
@@ -13,6 +14,7 @@ const Whois = () => {
   const [loading, setLoading] = useState(false);
   const toolboxApi = useApi(toolboxApiRef);
   const { classes } = useStyles();
+  const { t: intl } = useTranslation();
 
   const lookup = () => {
     setResponse({});
@@ -34,7 +36,7 @@ const Whois = () => {
       <Grid container spacing={2} alignItems="center">
         <Grid item>
           <TextField
-            label="Domain"
+            label={intl('tool.whois.domainInput')}
             variant="outlined"
             style={{ width: '20rem' }}
             value={domain}
@@ -45,7 +47,7 @@ const Whois = () => {
         </Grid>
         <Grid item>
           <Button variant="contained" color="primary" onClick={lookup}>
-            Lookup
+            {intl('tool.whois.lookupButton')}
           </Button>
         </Grid>
         <Grid item>
@@ -55,7 +57,7 @@ const Whois = () => {
               setDomain('google.com');
             }}
           >
-            Example
+            {intl('tool.whois.exampleButton')}
           </Button>
         </Grid>
       </Grid>

@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
+import { useTranslation } from '../../hooks';
 
 function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -45,6 +46,7 @@ const Countdown = () => {
   const { classes } = useStyles();
   const [isRunning, setIsRunning] = useState(false);
   const [chime, setChime] = useState(true);
+  const { t: intl } = useTranslation();
 
   const formatTime = (timeInSeconds: number) => {
     const hoursLeft = Math.floor(timeInSeconds / 3600);
@@ -119,7 +121,7 @@ const Countdown = () => {
                   color="primary"
                   onClick={handleStart}
                 >
-                  Start
+                  {intl('tool.countdown.startButton')}
                 </Button>
               )}
               {isRunning && (
@@ -128,7 +130,7 @@ const Countdown = () => {
                   color="secondary"
                   onClick={handleStop}
                 >
-                  Stop
+                  {intl('tool.countdown.stopButton')}
                 </Button>
               )}
               <Button
@@ -142,7 +144,7 @@ const Countdown = () => {
                   },
                 }}
               >
-                Reset
+                {intl('tool.countdown.resetButton')}
               </Button>
             </ButtonGroup>
             <FormControlLabel
@@ -157,7 +159,7 @@ const Countdown = () => {
         <Grid container spacing={4}>
           <Grid item>
             <TextField
-              label="Hours"
+              label={intl('tool.countdown.hoursLabel')}
               type="number"
               value={hours}
               variant="standard"
@@ -171,7 +173,7 @@ const Countdown = () => {
           </Grid>
           <Grid item>
             <TextField
-              label="Minutes"
+              label={intl('tool.countdown.minutesLabel')}
               type="number"
               value={minutes}
               variant="standard"
@@ -185,7 +187,7 @@ const Countdown = () => {
           </Grid>
           <Grid item>
             <TextField
-              label="Seconds"
+              label={intl('tool.countdown.secondsLabel')}
               type="number"
               value={seconds}
               variant="standard"
@@ -202,13 +204,13 @@ const Countdown = () => {
       {isRunning && (
         <Grid container spacing={2} justifyContent="center" alignItems="center">
           <Grid item>
-            <TimePaper value={timeLeft.hours} title="Hours" />
+            <TimePaper value={timeLeft.hours} title={intl('tool.countdown.hoursLabel')} />
           </Grid>
           <Grid item>
-            <TimePaper value={timeLeft.minutes} title="Minutes" />
+            <TimePaper value={timeLeft.minutes} title={intl('tool.countdown.minutesLabel')} />
           </Grid>
           <Grid item>
-            <TimePaper value={timeLeft.seconds} title="Seconds" />
+            <TimePaper value={timeLeft.seconds} title={intl('tool.countdown.secondsLabel')} />
           </Grid>
         </Grid>
       )}
