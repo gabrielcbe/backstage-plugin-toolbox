@@ -19,20 +19,52 @@ import { createTranslationRef } from '@backstage/core-plugin-api/alpha';
 export const toolboxTranslationRef = createTranslationRef({
   id: 'toolbox',
   messages: {
-    toolsPage:{
-        title: 'Toolbox',
-        pageTitle: 'Toolbox',
-        input:{
-            search: 'Search'
-        },
-        tabPanel:{
-            mainLabel: 'Toolbox',
-            tooltipTitle: 'Open tool in new window'
-        }
+    toolsPage: {
+      title: 'Toolbox',
+      pageTitle: 'Toolbox',
+      input: {
+        search: 'Search',
+      },
+      tabPanel: {
+        mainLabel: 'Toolbox',
+        tooltipTitle: 'Open tool in new window',
+      },
     },
     welcomePage: {
-        introText: 'The toolbox contains commonly used tools for development and design. These tools include encoding, data generation, conversion tools, and other utilities to make work easier. All data is kept within this domain, so you don’t have to worry about your data getting into the wrong hands.',
-        secondText: 'To select tools, click the cards below or use the left-side navigation.'
-    }
+      introText:
+        'The toolbox contains commonly used tools for development and design. These tools include encoding, data generation, conversion tools, and other utilities to make work easier. All data is kept within this domain, so you don’t have to worry about your data getting into the wrong hands.',
+      secondText:
+        'To select tools, click the cards below or use the left-side navigation.',
+    },
+    components: {
+      clearValueButton: {
+        tooltipTitle: 'Clear input value',
+        buttonText: 'Clear',
+      },
+      copyToClipboardButton: {
+        tooltipTitle: 'Copy output to clipboard',
+        buttonText: 'Copy',
+      },
+      favoriteButton: {
+        tooltipTitleFavorite: 'Remove this tool from favorites',
+        tooltipTitleNotFavorite: 'Mark this tool as favorite',
+      },
+      fileDownloadButton: {
+        tooltipTitle: 'Download file',
+        buttonText: 'Download file',
+      },
+      fileUploadButton: {
+        tooltipTitle: 'Upload File',
+        buttonText: 'Upload File',
+      },
+      pasteFromClipboardButton: {
+        tooltipTitle: 'Paste input from clipboard',
+        buttonText: 'Clipboard',
+      },
+      sampleButton: {
+        tooltipTitle: 'Input sample',
+        buttonText: 'Sample',
+      },
+    },
   },
 });

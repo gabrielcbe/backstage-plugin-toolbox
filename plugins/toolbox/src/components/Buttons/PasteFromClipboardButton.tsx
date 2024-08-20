@@ -2,6 +2,8 @@ import React from 'react';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import AssignmentReturnedIcon from '@mui/icons-material/AssignmentReturned';
+import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
+import { toolboxTranslationRef } from '../../translation';
 
 type Props = {
   setInput: (input: string) => void;
@@ -9,6 +11,7 @@ type Props = {
 };
 
 export const PasteFromClipboardButton = (props: Props) => {
+  const { t: intl } = useTranslationRef(toolboxTranslationRef);
   const pasteFromClipboard = () => {
     navigator.clipboard.readText().then(
       text => props.setInput(text),
@@ -16,7 +19,7 @@ export const PasteFromClipboardButton = (props: Props) => {
     );
   };
   return (
-    <Tooltip arrow title={props.title ?? 'Paste input from clipboard'}>
+    <Tooltip arrow title={props.title ?? intl('components.pasteFromClipboardButton.tooltipTitle')}>
       <Button
         size="small"
         startIcon={<AssignmentReturnedIcon />}
@@ -24,7 +27,7 @@ export const PasteFromClipboardButton = (props: Props) => {
         variant="text"
         color="inherit"
       >
-        Clipboard
+        {intl('components.pasteFromClipboardButton.buttonText')}
       </Button>
     </Tooltip>
   );
