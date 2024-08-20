@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
+import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
+import { toolboxTranslationRef } from '../../translation';
 
 export type WelcomePageProps = {
   tools: Tool[];
@@ -38,17 +40,14 @@ const useStyles = makeStyles()(theme => {
 export const WelcomePage = (props: WelcomePageProps) => {
   const { tools } = props;
   const { classes } = useStyles();
+  const { t: intl } = useTranslationRef(toolboxTranslationRef);
   return (
     <Box>
       <Typography className={classes.textBlock}>
-        The toolbox contains commonly used tools for development and design.
-        These tools include encoding, data generation, conversion tools, and
-        other utilities to make work easier. All data is kept within this
-        domain, so you don’t have to worry about your data getting into the
-        wrong hands.
+        {intl('welcomePage.introText')}
       </Typography>
       <Typography className={classes.textBlock}>
-        To select tools, click the cards below or use the left-side navigation.
+        {intl('welcomePage.secondText')}
       </Typography>
       <Grid
         container

@@ -27,6 +27,8 @@ import Button from '@mui/material/Button';
 import TabPanel from '@mui/lab/TabPanel';
 import TabContext from '@mui/lab/TabContext';
 import { useBackendTools } from '../../hooks';
+import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
+import { toolboxTranslationRef } from '../../translation';
 
 type TabInfo = {
   tab: ReactElement;
@@ -78,6 +80,8 @@ export const ToolsPage = (props: ToolsPageProps) => {
   const backendTools = useBackendTools();
   const favorites = useFavoriteStorage();
   const { classes } = useStyles();
+
+  const { t: intl } = useTranslationRef(toolboxTranslationRef);
 
   const openToolInWindow = (id: string) => {
     window.open(`/toolbox/tool/${id}`, 'newwindow', 'width=1000,height=800');
@@ -139,10 +143,10 @@ export const ToolsPage = (props: ToolsPageProps) => {
           key="toolbox"
           wrapped
           className={`${classes.fullWidth} ${classes.noPadding} ${classes.tab}`}
-          label="Toolbox"
+          label={intl('toolsPage.tabPanel.mainLabel')}
         />
       ),
-      title: 'Toolbox',
+      title: intl('toolsPage.pageTitle'),
       component: welcomePage || <WelcomePage tools={allTools} />,
       showFavoriteButton: false,
       showOpenInNewWindowButton: false,
@@ -259,7 +263,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
 
   return (
     <Page themeId="tool">
-      <Header title="Toolbox" />
+      <Header title={intl('toolsPage.title')} />
       <Content className={classes.noPadding}>
         <Grid
           container
@@ -274,7 +278,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
               sx={{ justifyContent: 'space-between' }}
             >
               <InputBase
-                placeholder="Search"
+                placeholder={intl('toolsPage.input.search')}
                 inputProps={{ 'aria-label': 'Search' }}
                 onChange={e => setSearch(e.target.value)}
               />
@@ -326,7 +330,7 @@ export const ToolsPage = (props: ToolsPageProps) => {
                       >
                         {tool.headerButtons}
                         {tool.showOpenInNewWindowButton !== false && (
-                          <Tooltip title="Open tool in new window" arrow>
+                          <Tooltip title={intl('toolsPage.tabPanel.tooltipTitle')} arrow>
                             <Button
                               size="small"
                               onClick={() => openToolInWindow(tool.id)}
