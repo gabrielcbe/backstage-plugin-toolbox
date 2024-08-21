@@ -12,9 +12,7 @@ export const ToolPage = (props: ToolsPageProps) => {
   const { extraTools } = props;
   const params = useParams();
   const { classes } = useStyles();
-  const { t } = useToolboxTranslation();
-  // Override type as `tool.${tool.id}.name` would require Tool type to be union type of all tools id
-  const intl = t as (str: string ) => string | undefined
+  const { t, i18n_UNSAFE } = useToolboxTranslation();
 
   const allTools = [...(extraTools ?? []), ...defaultTools];
   const tool = allTools.find(({ id }) => id === params.id);
@@ -37,8 +35,8 @@ export const ToolPage = (props: ToolsPageProps) => {
         }
       >
         <ContentHeader
-          title={`${tool.category} - ${intl(`tool.${tool.id}.name`) ?? tool.name}`}
-          description={intl(`tool.${tool.id}.description`) ?? tool.description}
+          title={`${tool.category} - ${i18n_UNSAFE(`tool.${tool.id}.name`, tool.name)}`}
+          description={i18n_UNSAFE(`tool.${tool.id}.description`, tool.description)}
         >
           {tool.headerButtons}
         </ContentHeader>
