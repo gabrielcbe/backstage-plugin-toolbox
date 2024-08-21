@@ -6,7 +6,7 @@ import { Progress } from '@backstage/core-components';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { useTranslation } from '../../hooks';
+import { useToolboxTranslation } from '../../hooks';
 
 const Whois = () => {
   const [domain, setDomain] = useState('');
@@ -14,7 +14,7 @@ const Whois = () => {
   const [loading, setLoading] = useState(false);
   const toolboxApi = useApi(toolboxApiRef);
   const { classes } = useStyles();
-  const { t: intl } = useTranslation();
+  const { t } = useToolboxTranslation();
 
   const lookup = () => {
     setResponse({});
@@ -36,7 +36,7 @@ const Whois = () => {
       <Grid container spacing={2} alignItems="center">
         <Grid item>
           <TextField
-            label={intl('tool.whois.domainInput')}
+            label={t('tool.whois.domainInput')}
             variant="outlined"
             style={{ width: '20rem' }}
             value={domain}
@@ -47,7 +47,7 @@ const Whois = () => {
         </Grid>
         <Grid item>
           <Button variant="contained" color="primary" onClick={lookup}>
-            {intl('tool.whois.lookupButton')}
+            {t('tool.whois.lookupButton')}
           </Button>
         </Grid>
         <Grid item>
@@ -57,7 +57,7 @@ const Whois = () => {
               setDomain('google.com');
             }}
           >
-            {intl('tool.whois.exampleButton')}
+            {t('tool.whois.exampleButton')}
           </Button>
         </Grid>
       </Grid>

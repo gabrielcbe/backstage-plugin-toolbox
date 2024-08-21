@@ -20,7 +20,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
-import { useTranslation } from '../../hooks';
+import { useToolboxTranslation } from '../../hooks';
 import { SampleButton } from '../Buttons';
 
 export const ColorConverter = () => {
@@ -35,7 +35,7 @@ export const ColorConverter = () => {
   const [lab, setLab] = React.useState<LAB>([0, 0, 0]);
   const [lch, setLch] = React.useState<LCH>([0, 0, 0]);
   const sample = '#d50032';
-  const { t: intl } = useTranslation();
+  const { t } = useToolboxTranslation();
 
   enum ColorType {
     Hex = 'HEX',
@@ -315,7 +315,7 @@ export const ColorConverter = () => {
             <TextField
               id="input"
               name="input"
-              label={intl('tool.color-convert.inputLabel')}
+              label={t('tool.color-convert.inputLabel')}
               value={getInputStr()}
               className={classes.fullWidth}
               onChange={e => handleChange(e.target.value)}

@@ -5,7 +5,7 @@ import { MarkdownContent } from '@backstage/core-components';
 import { useStyles } from '../../utils/hooks';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import { useTranslation } from '../../hooks';
+import { useToolboxTranslation } from '../../hooks';
 
 // this library has no types available
 const { gfm } = require('turndown-plugin-gfm') as {
@@ -16,7 +16,7 @@ export const RichTextToMarkdown = () => {
   const { classes } = useStyles();
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
-  const { t: intl } = useTranslation();
+  const { t } = useToolboxTranslation();
 
   const sample = '<h1>Hello world</h1><p>This is some content</p>';
 
@@ -48,7 +48,7 @@ export const RichTextToMarkdown = () => {
               className={classes.previewPaper}
               style={{ marginTop: '1rem' }}
             >
-              <Typography variant="subtitle1">{intl('tool.rich-text-to-markdown-convert.preview')}:</Typography>
+              <Typography variant="subtitle1">{t('tool.rich-text-to-markdown-convert.preview')}:</Typography>
               <MarkdownContent content={output} />
             </Paper>
           )}

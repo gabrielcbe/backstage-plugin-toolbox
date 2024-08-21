@@ -1,13 +1,13 @@
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import React from 'react';
-import { useTranslation } from '../../hooks';
+import { useToolboxTranslation } from '../../hooks';
 
 export const JsonSpaceSelector = (props: {
   spaces: number;
   onChange: (spaces: number) => void;
 }) => {
-  const { t: intl } = useTranslation();
+  const { t } = useToolboxTranslation();
   return (
     <Select
       value={props.spaces}
@@ -27,16 +27,16 @@ export const JsonSpaceSelector = (props: {
       }}
     >
       <MenuItem value={2} sx={{ p: '6px 16px !important' }}>
-        {intl('components.jsonSpaceSelector.count', { spaceCount: '2' })}
+        {t('components.jsonSpaceSelector.count', { spaceCount: '2' })}
       </MenuItem>
       <MenuItem value={3} sx={{ p: '6px 16px !important' }}>
-        {intl('components.jsonSpaceSelector.count', { spaceCount: '3' })}
+        {t('components.jsonSpaceSelector.count', { spaceCount: '3' })}
       </MenuItem>
       <MenuItem value={4} sx={{ p: '6px 16px !important' }}>
-        {intl('components.jsonSpaceSelector.count', { spaceCount: '4' })}
+        {t('components.jsonSpaceSelector.count', { spaceCount: '4' })}
       </MenuItem>
       <MenuItem value={8} sx={{ p: '6px 16px !important' }}>
-        {intl('components.jsonSpaceSelector.count', { spaceCount: '8' })}
+        {t('components.jsonSpaceSelector.count', { spaceCount: '8' })}
       </MenuItem>
     </Select>
   );

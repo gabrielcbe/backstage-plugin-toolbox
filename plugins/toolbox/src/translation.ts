@@ -15,7 +15,7 @@
  */
 import { createTranslationRef } from '@backstage/core-plugin-api/alpha';
 
-/** @alpha */
+/** @public */
 export const toolboxTranslationRef = createTranslationRef({
   id: 'toolbox',
   messages: {
@@ -38,17 +38,6 @@ export const toolboxTranslationRef = createTranslationRef({
         'The toolbox contains commonly used tools for development and design. These tools include encoding, data generation, conversion tools, and other utilities to make work easier. All data is kept within this domain, so you don’t have to worry about your data getting into the wrong hands.',
       secondText:
         'To select tools, click the cards below or use the left-side navigation.',
-    },
-    toolCategory: {
-      encodeOrDecode: 'Encode/Decode',
-      convert: 'Convert',
-      miscellaneous: 'Miscellaneous',
-      calculate: 'Calculate',
-      backstage: 'Backstage',
-      generate: 'Generate',
-      format: 'Format',
-      validate: 'Validate',
-      networking: 'Networking',
     },
     tool: {
       'base64-encode': {

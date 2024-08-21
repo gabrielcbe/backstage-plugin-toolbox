@@ -6,7 +6,7 @@ import { CopyToClipboardButton } from '../Buttons/CopyToClipboardButton';
 import FormControl from '@mui/material/FormControl';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { useTranslation } from '../../hooks';
+import { useToolboxTranslation } from '../../hooks';
 
 export const NumberBase = () => {
   const { classes } = useStyles();
@@ -16,7 +16,7 @@ export const NumberBase = () => {
     decimal: '',
     hex: '',
   });
-  const { t: intl } = useTranslation();
+  const { t } = useToolboxTranslation();
 
   const handleChange = (name: string, value: string) => {
     if (value.length === 0) {
@@ -58,7 +58,7 @@ export const NumberBase = () => {
     <>
       <FormControl className={classes.fullWidth}>
         <Typography variant="subtitle1">
-          {intl('tool.number-base-convert.base2')}
+          {t('tool.number-base-convert.base2')}
           <PasteFromClipboardButton setInput={v => handleChange('binary', v)} />
           <ClearValueButton setValue={() => handleChange('binary', '')} />
           <CopyToClipboardButton output={state.binary} />
@@ -72,7 +72,7 @@ export const NumberBase = () => {
           variant="outlined"
         />
         <Typography variant="subtitle1">
-          {intl('tool.number-base-convert.base8')}
+          {t('tool.number-base-convert.base8')}
           <PasteFromClipboardButton setInput={v => handleChange('octal', v)} />
           <ClearValueButton setValue={() => handleChange('octal', '')} />
           <CopyToClipboardButton output={state.octal} />
@@ -86,7 +86,7 @@ export const NumberBase = () => {
           variant="outlined"
         />
         <Typography variant="subtitle1">
-          {intl('tool.number-base-convert.base10')}
+          {t('tool.number-base-convert.base10')}
           <PasteFromClipboardButton
             setInput={v => handleChange('decimal', v)}
           />
@@ -102,7 +102,7 @@ export const NumberBase = () => {
           variant="outlined"
         />
         <Typography variant="subtitle1">
-          {intl('tool.number-base-convert.base16')}
+          {t('tool.number-base-convert.base16')}
           <PasteFromClipboardButton setInput={v => handleChange('hex', v)} />
           <ClearValueButton setValue={() => handleChange('hex', '')} />
           <CopyToClipboardButton output={state.hex} />

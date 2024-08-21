@@ -12,13 +12,13 @@ import Select from '@mui/material/Select';
 import Grid from '@mui/material/Grid';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
-import { useTranslation } from '../../hooks';
+import { useToolboxTranslation } from '../../hooks';
 
 export const TimeConverter = () => {
   const { classes } = useStyles();
   const [input, setInput] = React.useState<DateTime | null>(null);
   const [inputType, setInputType] = React.useState('unix');
-  const { t: intl } = useTranslation();
+  const { t } = useToolboxTranslation();
 
   const getInputStr = () => {
     if (input === null) {
@@ -100,28 +100,28 @@ export const TimeConverter = () => {
                 onClick={() => setInput(DateTime.now())}
                 color="inherit"
               >
-                {intl('tool.time-convert.labelNow')}
+                {t('tool.time-convert.labelNow')}
               </Button>
             </Typography>
             <TextField
               className={classes.fullWidth}
               id="input"
               name="input"
-              label={intl('tool.time-convert.labelInput')}
+              label={t('tool.time-convert.labelInput')}
               value={getInputStr()}
               onChange={e => handleChange(e.target.value)}
               variant="outlined"
             />
           </Grid>
           <Grid item xs={12} lg={4}>
-            <Typography variant="subtitle1">{intl('tool.time-convert.inputType')}</Typography>
+            <Typography variant="subtitle1">{t('tool.time-convert.inputType')}</Typography>
             <Select
               value={inputType}
               onChange={e => setInputType(e.target.value as string)}
             >
-              <MenuItem value="unix">{intl('tool.time-convert.unixTime')}</MenuItem>
+              <MenuItem value="unix">{t('tool.time-convert.unixTime')}</MenuItem>
               <MenuItem value="milliseconds">
-                {intl('tool.time-convert.millisecondsTime')}
+                {t('tool.time-convert.millisecondsTime')}
               </MenuItem>
               <MenuItem value="iso8601">ISO8601</MenuItem>
               <MenuItem value="sql">SQL</MenuItem>
@@ -134,7 +134,7 @@ export const TimeConverter = () => {
         <Grid container>
           <Grid item lg={5} md={8} xs={12}>
             <OutputField
-              label={`${intl('tool.time-convert.outputLabel.local')} (ISO8601)`}
+              label={`${t('tool.time-convert.outputLabel.local')} (ISO8601)`}
               value={input?.toLocal().toString()}
             />
             <OutputField
@@ -143,25 +143,25 @@ export const TimeConverter = () => {
             />
             <OutputField label="Relative" value={input?.toRelative()} />
             <OutputField
-              label={intl('tool.time-convert.outputLabel.unix')}
+              label={t('tool.time-convert.outputLabel.unix')}
               value={input?.toSeconds().toFixed(0).toString()}
             />
             <OutputField label="RFC2822" value={input?.toRFC2822()} />
             <OutputField label="HTTP" value={input?.toHTTP()} />
           </Grid>
           <Grid item lg={2} md={4} xs={12}>
-            <OutputField label={intl('tool.time-convert.outputLabel.dayOfTheWeek')} value={input?.toFormat('c')} />
-            <OutputField label={intl('tool.time-convert.outputLabel.weekNumber')} value={input?.toFormat('W')} />
-            <OutputField label={intl('tool.time-convert.outputLabel.quarter')} value={input?.toFormat('q')} />
-            <OutputField label={intl('tool.time-convert.outputLabel.dayOfTheYear')} value={input?.toFormat('o')} />
+            <OutputField label={t('tool.time-convert.outputLabel.dayOfTheWeek')} value={input?.toFormat('c')} />
+            <OutputField label={t('tool.time-convert.outputLabel.weekNumber')} value={input?.toFormat('W')} />
+            <OutputField label={t('tool.time-convert.outputLabel.quarter')} value={input?.toFormat('q')} />
+            <OutputField label={t('tool.time-convert.outputLabel.dayOfTheYear')} value={input?.toFormat('o')} />
             <OutputField
-              label={intl('tool.time-convert.outputLabel.leapYear')}
+              label={t('tool.time-convert.outputLabel.leapYear')}
               value={input?.isInLeapYear ? 'true' : 'false'}
             />
           </Grid>
           <Grid item lg={5} md={12} xs={12}>
             <OutputField
-              label={intl('tool.time-convert.outputLabel.local')}
+              label={t('tool.time-convert.outputLabel.local')}
               value={input?.toLocaleString(DateTime.DATETIME_FULL)}
             />
             <OutputField label="SQL" value={input?.toSQL()} />
@@ -173,7 +173,7 @@ export const TimeConverter = () => {
               label="DD/MM/YYYY"
               value={input?.toFormat('dd/MM/yyyy')}
             />
-            <OutputField label={intl('tool.time-convert.outputLabel.timezone')} value={input?.toFormat('z')} />
+            <OutputField label={t('tool.time-convert.outputLabel.timezone')} value={input?.toFormat('z')} />
           </Grid>
         </Grid>
       </FormControl>

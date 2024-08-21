@@ -1,10 +1,10 @@
 import React from 'react';
 import { defaultTools } from '../Root/tools';
 import Typography from '@mui/material/Typography';
-import { useTranslation } from '../../hooks';
+import { useToolboxTranslation } from '../../hooks';
 
 export const Content = (props?: { toolId?: string }) => {
-  const { t: intl } = useTranslation();
+  const { t: intl } = useToolboxTranslation();
 
   const tool = defaultTools.find(t => t.id === props?.toolId);
   if (!tool) {

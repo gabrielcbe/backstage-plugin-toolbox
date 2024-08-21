@@ -9,7 +9,7 @@ import {
 import { faker } from '@faker-js/faker';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import { useTranslation } from '../../hooks';
+import { useToolboxTranslation } from '../../hooks';
 
 const UrlExploder = () => {
   const [url, setUrl] = useState<null | URL>(null);
@@ -24,7 +24,7 @@ const UrlExploder = () => {
   const [query, setQuery] = useState('');
   const [origin, setOrigin] = useState('');
   const { classes } = useStyles();
-  const { t: intl } = useTranslation();
+  const { t } = useToolboxTranslation();
 
   const onInput = (value: string) => {
     setRawInput(value);
@@ -85,12 +85,12 @@ const UrlExploder = () => {
         <SampleButton setInput={onInput} sample={faker.internet.url()} />
         <ClearValueButton setValue={onInput} />
         <PasteFromClipboardButton
-          title={intl('tool.url-exploder.pasteFromClipboard')}
+          title={t('tool.url-exploder.pasteFromClipboard')}
           setInput={onInput}
         />
         {rawInput && (
           <CopyToClipboardButton
-            title={intl('tool.url-exploder.copyToClipboard')}
+            title={t('tool.url-exploder.copyToClipboard')}
             output={rawInput}
           />
         )}
@@ -105,48 +105,48 @@ const UrlExploder = () => {
       </Grid>
       <Grid item xs={6}>
         <TextField
-          label={intl('tool.url-exploder.protocolLabel')}
+          label={t('tool.url-exploder.protocolLabel')}
           className={classes.fullWidth}
           value={protocol}
           style={{ marginBottom: '10px' }}
           onChange={e => setProtocol(e.target.value)}
         />
         <TextField
-          label={intl('tool.url-exploder.pathLabel')}
+          label={t('tool.url-exploder.pathLabel')}
           className={classes.fullWidth}
           value={path}
           style={{ marginBottom: '10px' }}
           onChange={e => setPath(e.target.value)}
         />
         <TextField
-          label={intl('tool.url-exploder.usernameLabel')}
+          label={t('tool.url-exploder.usernameLabel')}
           className={classes.fullWidth}
           value={username}
           style={{ marginBottom: '10px' }}
           onChange={e => setUsername(e.target.value)}
         />
         <TextField
-          label={intl('tool.url-exploder.queryLabel')}
+          label={t('tool.url-exploder.queryLabel')}
           className={classes.fullWidth}
           value={query}
           multiline
           minRows={10}
           style={{ marginBottom: '10px' }}
           onChange={e => setQuery(e.target.value)}
-          helperText={intl('tool.url-exploder.queryHelperText')}
+          helperText={t('tool.url-exploder.queryHelperText')}
         />
       </Grid>
 
       <Grid item xs={6}>
         <TextField
-          label={intl('tool.url-exploder.hostLabel')}
+          label={t('tool.url-exploder.hostLabel')}
           className={classes.fullWidth}
           value={host}
           style={{ marginBottom: '10px' }}
           onChange={e => setHost(e.target.value)}
         />
         <TextField
-          label={intl('tool.url-exploder.portLabel')}
+          label={t('tool.url-exploder.portLabel')}
           className={classes.fullWidth}
           type="number"
           value={port}
@@ -154,21 +154,21 @@ const UrlExploder = () => {
           onChange={e => setPort(e.target.value)}
         />
         <TextField
-          label={intl('tool.url-exploder.passwordLabel')}
+          label={t('tool.url-exploder.passwordLabel')}
           className={classes.fullWidth}
           value={password}
           style={{ marginBottom: '10px' }}
           onChange={e => setPassword(e.target.value)}
         />
         <TextField
-          label={intl('tool.url-exploder.hashLabel')}
+          label={t('tool.url-exploder.hashLabel')}
           className={classes.fullWidth}
           value={hash}
           style={{ marginBottom: '10px' }}
           onChange={e => setHash(e.target.value)}
         />
         <TextField
-          label={intl('tool.url-exploder.originLabel')}
+          label={t('tool.url-exploder.originLabel')}
           className={classes.fullWidth}
           value={origin}
           InputProps={{

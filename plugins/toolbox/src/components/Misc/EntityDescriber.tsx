@@ -11,7 +11,7 @@ import Grid from '@mui/material/Grid';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { useTranslation } from '../../hooks';
+import { useToolboxTranslation } from '../../hooks';
 
 export const EntityDescriber = () => {
   const catalogApi = useApi(catalogApiRef);
@@ -22,7 +22,7 @@ export const EntityDescriber = () => {
   const [availableEntities, setAvailableEntities] = React.useState<
     Entity[] | null
   >([]);
-  const { t: intl } = useTranslation();
+  const { t } = useToolboxTranslation();
   useEffect(() => {
     catalogApi.getEntities().then(data => {
       if (data) {
@@ -75,14 +75,14 @@ export const EntityDescriber = () => {
             value={entity}
             onChange={(_e, value) => setEntity(value)}
             renderInput={params => (
-              <TextField {...params} label={intl('tool.entity-describer.entityLabel')} variant="outlined" />
+              <TextField {...params} label={t('tool.entity-describer.entityLabel')} variant="outlined" />
             )}
           />
         </Grid>
         <Grid item xs={8} lg={9}>
           <TextField
             id="output"
-            label={intl('tool.entity-describer.outputLabel')}
+            label={t('tool.entity-describer.outputLabel')}
             value={output || ''}
             className={classes.fullWidth}
             multiline

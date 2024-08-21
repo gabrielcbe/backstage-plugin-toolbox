@@ -4,7 +4,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import Star from '@mui/icons-material/Star';
 import StarOutline from '@mui/icons-material/StarOutline';
-import { useTranslation } from '../../hooks';
+import { useToolboxTranslation } from '../../hooks';
 
 type Props = {
   toolId: string;
@@ -14,7 +14,7 @@ export const FAVORITES_STORAGE = 'toolboxFavorites';
 export const FavoriteButton = (props: Props) => {
   const { toolId } = props;
   const currentFavorites = useFavoriteStorage();
-  const { t: intl } = useTranslation();
+  const { t } = useToolboxTranslation();
   const handleClick = () => {
     try {
       const favorites = localStorage.getItem(FAVORITES_STORAGE);
@@ -42,8 +42,8 @@ export const FavoriteButton = (props: Props) => {
     <Tooltip
       title={
         isFavorite
-          ? intl('components.favoriteButton.tooltipTitleFavorite')
-          : intl('components.favoriteButton.tooltipTitleNotFavorite')
+          ? t('components.favoriteButton.tooltipTitleFavorite')
+          : t('components.favoriteButton.tooltipTitleNotFavorite')
       }
       arrow
     >

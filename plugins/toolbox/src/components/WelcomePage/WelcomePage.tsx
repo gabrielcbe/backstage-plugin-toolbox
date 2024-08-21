@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import CardContent from '@mui/material/CardContent';
 import Card from '@mui/material/Card';
-import { useTranslation } from '../../hooks';
+import { useToolboxTranslation } from '../../hooks';
 
 export type WelcomePageProps = {
   tools: Tool[];
@@ -39,14 +39,15 @@ const useStyles = makeStyles()(theme => {
 export const WelcomePage = (props: WelcomePageProps) => {
   const { tools } = props;
   const { classes } = useStyles();
-  const { t: intl } = useTranslation();
+  const { t, i18n_UNSAFE } = useToolboxTranslation();
+
   return (
     <Box>
       <Typography className={classes.textBlock}>
-        {intl('welcomePage.introText')}
+        {t('welcomePage.introText')}
       </Typography>
       <Typography className={classes.textBlock}>
-        {intl('welcomePage.secondText')}
+        {t('welcomePage.secondText')}
       </Typography>
       <Grid
         container
@@ -74,9 +75,9 @@ export const WelcomePage = (props: WelcomePageProps) => {
                   >
                     {tool.category ?? 'Miscellaneous'}
                   </Typography>
-                  <Typography variant="h6">{tool.name}</Typography>
+                  <Typography variant="h6">{i18n_UNSAFE(`tool.${tool.id}.name`, tool.name)}</Typography>
                   <Typography variant="body2" component="p">
-                    {tool.description}
+                    {i18n_UNSAFE(`tool.${tool.id}.description`, tool.description)}
                   </Typography>
                 </CardContent>
               </Card>

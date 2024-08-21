@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { DefaultEditor } from '../DefaultEditor/DefaultEditor';
 import beautify from 'js-beautify';
-import { useTranslation } from '../../hooks';
+import { useToolboxTranslation } from '../../hooks';
 
 export const JSBeautify = () => {
   const [input, setInput] = React.useState('');
   const [output, setOutput] = React.useState('');
-  const { t: intl } = useTranslation();
+  const { t } = useToolboxTranslation();
 
   const sample =
     '[{"type": "car","name": "pedro","stars": 3},{"type": "plant","name": "samuel","stars": 2}]';
@@ -35,8 +35,8 @@ export const JSBeautify = () => {
       output={output}
       sample={sample}
       allowFileUpload
-      inputLabel={intl('tool.format-js.inputLabel')}
-      outputLabel={intl('tool.format-js.outputLabel')}
+      inputLabel={t('tool.format-js.inputLabel')}
+      outputLabel={t('tool.format-js.outputLabel')}
       acceptFileTypes=".js,.jsx,.ts,.tsx,.json"
       allowFileDownload
       downloadFileName="download.js"

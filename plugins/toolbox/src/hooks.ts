@@ -1,7 +1,7 @@
 import { ToolboxApi, toolboxApiRef } from './api';
 import { useApi } from '@backstage/core-plugin-api';
 import useAsync from 'react-use/lib/useAsync';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslationRef } from '@backstage/core-plugin-api/alpha';
 import { toolboxTranslationRef } from './translation';
 
@@ -27,6 +27,22 @@ export function useToolboxApi<T>(
   }, deps);
 }
 
-export const useTranslation = () => {
-  return useTranslationRef(toolboxTranslationRef);;
+export const useToolboxTranslation = () => {
+  const hookRef = useTranslationRef(toolboxTranslationRef);
+
+  const i18n_UNSAFE = useCallback(
+    (str: string, defaultValue?: string): string => {
+      const intl = hookRef.t as (string: string) => string;
+      const value = intl(str);
+      if (value === str && defaultValue) {
+        return defaultValue;
+      }
+      return value;
+    },
+    [hookRef],
+  );
+  return {
+    ...hookRef,
+    i18n_UNSAFE,
+  };
 };
